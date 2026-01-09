@@ -1,0 +1,19 @@
+{
+  "name": "thevedavault-backend",
+  "version": "1.0.0",
+  "description": "This is Backend APIs for thevedavault ecom project",
+  "license": "ISC",
+  "author": "Dev Ranjeet Saw",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "test"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "mongoose": "^9.1.2",
+    "morgan": "^1.10.1"
+  }
+}
