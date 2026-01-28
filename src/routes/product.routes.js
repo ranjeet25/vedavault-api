@@ -8,7 +8,7 @@ import {
 
 const router = express.Router();
 
-router.post("/", createProduct);          // Admin
+router.post("/", createProduct);           // Admin
 router.get("/", getAllProducts);           // Public
 //router.get("/:slug", getProductBySlug);    // Public
 router.get("/:id", getProductById);    // Public

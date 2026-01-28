@@ -2,9 +2,11 @@ import jwt from "jsonwebtoken";
 
 const authMiddleware = (roles = []) => {
   return (req, res, next) => {
+    //console.log("🔥 Auth middleware triggered");
+
     const authHeader = req.headers.authorization;
 
-    if (!authHeader?.startsWith("Bearer ")) {
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
       return res.status(401).json({ message: "Unauthorized" });
     }
 
@@ -12,13 +14,20 @@ const authMiddleware = (roles = []) => {
       const token = authHeader.split(" ")[1];
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-      if (roles.length && !roles.includes(decoded.role)) {
+      req.user = {
+        id: decoded.id,
+        role: decoded.role,
+      };
+
+      //console.log("✅ User attached:", req.user);
+
+      if (roles.length && !roles.includes(req.user.role)) {
         return res.status(403).json({ message: "Forbidden" });
       }
 
-      req.user = decoded;
       next();
-    } catch {
+    } catch (err) {
+      console.error("JWT ERROR:", err.message);
       return res.status(401).json({ message: "Invalid token" });
     }
   };

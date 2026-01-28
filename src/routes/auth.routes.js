@@ -7,15 +7,13 @@ import {
 
 const router = express.Router();
 
-/**
- * Registration
- */
+
+//Registration
+
 router.post("/register/distributor", registerDistributor);
 router.post("/register/customer", registerCustomer);
 
-/**
- * Login
- */
+//Login 
 router.post("/login", login);
 
 export default router;
