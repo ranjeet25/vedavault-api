@@ -5,11 +5,13 @@ import OrderService from "../services/order.service.js";
  */
 export const placeOrder = async (req, res) => {
   try {
-    console.log("User placing order:", req.user);
+    //console.log("User placing order:", req.body);
     const order = await OrderService.createOrder(
       req.user.id,
       req.body
     );
+
+    //console.log("Order created:",  req.body);
 
     res.status(201).json({
       success: true,

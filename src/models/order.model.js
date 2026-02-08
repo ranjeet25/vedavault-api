@@ -19,6 +19,14 @@ const orderItemSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    superCoinsEarned: {
+      type: Number,
+      required: true,
+    },
+    estimatedDeliveryDays:{
+      type: String,
+    }
+
   },
   { _id: false }
 );
